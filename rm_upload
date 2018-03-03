@@ -1,0 +1,13 @@
+#!/bin/sh
+if [ "$#" -eq 0 ]
+then
+printf "Usage: %s filename.pdf\n" $0
+fi    
+
+FILENAME=$1
+curl 'http://10.11.99.1/upload'\
+      -H 'Origin: http://10.11.99.1'\
+      -H 'Accept: */*'\
+      -H 'Referer: http://10.11.99.1/'\
+      -H 'Connection: keep-alive'\
+      -F "file=@$FILENAME;filename=$FILENAME;type=application/pdf" 
